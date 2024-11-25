@@ -45,7 +45,29 @@ const VisualisationMap: React.FC = () => {
     };
   }, [taxiData]);
 
-  return <div id="map" style={{ height: "100vh", width: "100%" }} />;
+  return (
+    <div style={{ display: "flex", flexDirection: "column", height: "90vh" }}>
+      <div id="map" style={{ flex: 1, width: "100%" }} />
+      <div
+        style={{
+          textAlign: "center",
+          padding: "10px",
+          backgroundColor: "#f8f9fa",
+          fontSize: "14px",
+          borderTop: "1px solid #ddd",
+        }}
+      >
+        Data sourced from{" "}
+        <a
+          href="https://data.gov.sg/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          data.gov.sg
+        </a>
+      </div>
+    </div>
+  );
 };
 
 export default VisualisationMap;
