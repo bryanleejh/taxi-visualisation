@@ -18,7 +18,9 @@ L.Icon.Default.mergeOptions({
 });
 
 const VisualisationMap: React.FC = () => {
-  const taxiData = useTaxiData();
+  const { taxiData, timestamp } = useTaxiData();
+
+  console.log("timestamp", timestamp);
 
   useEffect(() => {
     // Initialize the map
@@ -50,21 +52,38 @@ const VisualisationMap: React.FC = () => {
       <div id="map" style={{ flex: 1, width: "100%" }} />
       <div
         style={{
-          textAlign: "center",
           padding: "10px",
           backgroundColor: "#f8f9fa",
           fontSize: "14px",
           borderTop: "1px solid #ddd",
+          textAlign: "center",
         }}
       >
-        Data sourced from{" "}
-        <a
-          href="https://data.gov.sg/"
-          target="_blank"
-          rel="noopener noreferrer"
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-evenly",
+            alignItems: "center",
+          }}
         >
-          data.gov.sg
-        </a>
+          <p style={{ margin: 0 }}>
+            <strong>Available Taxis:</strong> {taxiData.length}
+          </p>
+          <p>
+            Data sourced from{" "}
+            <a
+              href="https://data.gov.sg/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              data.gov.sg
+            </a>
+          </p>
+          <p style={{ margin: 0 }}>
+            <strong>Data Accurate As Of:</strong>{" "}
+            {new Date(timestamp).toLocaleString()}
+          </p>
+        </div>
       </div>
     </div>
   );

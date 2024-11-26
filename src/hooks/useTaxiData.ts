@@ -5,11 +5,16 @@ interface TaxiData {
     geometry: {
       coordinates: [number, number][];
     };
+    properties: {
+      timestamp: string;
+    };
   }[];
+  timestamp: string;
 }
 
 const useTaxiData = () => {
   const [taxiData, setTaxiData] = useState<[number, number][]>([]);
+  const [timestamp, setTimestamp] = useState<string>("");
 
   useEffect(() => {
     const fetchTaxiData = async () => {
@@ -24,6 +29,7 @@ const useTaxiData = () => {
           ([lng, lat]) => [lat, lng] as [number, number] // Swap order to [lat, lng]
         );
         setTaxiData(coordinates);
+        setTimestamp(data.features[0].properties.timestamp);
       } catch (error) {
         console.error("Failed to fetch taxi data:", error);
       }
@@ -36,7 +42,7 @@ const useTaxiData = () => {
     return () => clearInterval(interval); // Clean up on unmount
   }, []);
 
-  return taxiData;
+  return { taxiData, timestamp };
 };
 
 export default useTaxiData;
