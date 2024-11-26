@@ -66,10 +66,10 @@ const VisualisationMap: React.FC = () => {
             alignItems: "center",
           }}
         >
-          <p style={{ margin: 0 }}>
+          <div style={{ margin: 0 }}>
             <strong>Available Taxis:</strong> {taxiData.length}
-          </p>
-          <p>
+          </div>
+          <div>
             Data sourced from{" "}
             <a
               href="https://data.gov.sg/"
@@ -78,11 +78,11 @@ const VisualisationMap: React.FC = () => {
             >
               data.gov.sg
             </a>
-          </p>
-          <p style={{ margin: 0 }}>
+          </div>
+          <div style={{ margin: 0 }}>
             <strong>Data Accurate As Of:</strong>{" "}
             {new Date(timestamp).toLocaleString()}
-          </p>
+          </div>
         </div>
       </div>
     </div>
